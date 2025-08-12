@@ -50,7 +50,56 @@ async function getAllRecords() {
     });
 }
 
+// function for our detail view
+async function getOneRecord(id) {
+  let jobsResultElement = document.getElementById("shops");
 
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer patbCX1P9y8lcLCyn.21fdeb86ff777ea7aa6539e51cbd21fd3ecdd82e22da668f43278039161cb122`,
+    },
+  };
+
+  await fetch(
+    `https://api.airtable.com/v0/appYT2ZMsqk7JUGvF/IdleHand/${id}`,
+    options
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data); // response is a single object
+
+      let image = data.fields["Image"];
+      let name = data.fields["Name"];
+      let style = data.fields["Style"];
+      let instagram = data.fields["Instagram"];
+      let email = data.fields["Email"];
+      let website = data.fields["Website"];
+      
+      let newHtml = `
+        <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+     ${
+          image
+            ? `<img class="card-img-top rounded" alt="${name}" src="${image[0].url}">`
+            : ``
+        }
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">${name}</h5>
+        <p class="card-text">Style: ${style}</p>
+        <a href="https://www.instagram.com/${instagram}" target="_blank"><img src="images/instagram.jpg"></a>
+      </div>
+    </div>
+  </div>
+</div>
+      `;
+
+      jobsResultElement.innerHTML = newHtml;
+    });
+}
 
 // look up window.location.search and split, so this would take
 // https://dmspr2021-airtable-app.glitch.me/index.html?id=receHhOzntTGZ44I5
