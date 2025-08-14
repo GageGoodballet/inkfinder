@@ -88,7 +88,7 @@ async function getOneRecord(id) {
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">${name}</h5>
+        <h5 class="card-title artist">${name}</h5>
         <p class="card-text">Style: ${style}</p>
         <a href="https://www.instagram.com/${instagram}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
 
