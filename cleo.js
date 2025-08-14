@@ -77,12 +77,12 @@ async function getOneRecord(id) {
       let website = data.fields["Website"];
       
       let newHtml = `
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-3" style="max-width: 100rem;">
   <div class="row g-0">
     <div class="col-md-4">
      ${
           image
-            ? `<img class="card-img-top rounded" alt="${name}" src="${image[0].url}">`
+            ? `<img class="img-fluid rounded-start" alt="${name}" src="${image[0].url}">`
             : ``
         }
     </div>
@@ -90,7 +90,7 @@ async function getOneRecord(id) {
       <div class="card-body">
         <h5 class="card-title">${name}</h5>
         <p class="card-text">Style: ${style}</p>
-        <a href="https://www.instagram.com/${instagram}" target="_blank"><img src="images/instagram.jpg"></a>
+        <a href="https://www.instagram.com/${instagram}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
       </div>
     </div>
   </div>
